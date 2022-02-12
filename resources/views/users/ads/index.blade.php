@@ -14,14 +14,14 @@
          @if(auth()->user()->id === $user->id)
         <div class="flex justify-evenly m-8">
              <a href="{{route('adsliked', $user->id)}}">
-                <div class=" border-2 border-yellow-600 rounded-lg px-3 py-2 text-white cursor-pointer hover:bg-yellow-600 hover:text-white">
+                <div class=" border-2 border-yellow-300 rounded-lg px-3 py-2 text-black cursor-pointer hover:bg-yellow-300 hover:text-white">
                 Voted Sucksesses
                 </div>
             </a>
 
             <!--add angel code -->
             <a href="{{route('editUser')}}">
-                <div class="border-2 border-yellow-600 rounded-lg px-3 py-2 text-white cursor-pointer hover:bg-yellow-600 hover:text-white">
+                <div class="border-2 border-yellow-300 rounded-lg px-3 py-2 text-black cursor-pointer hover:bg-yellow-300 hover:text-white">
                 Edit profile
                 </div>
             </a>
@@ -33,12 +33,12 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                @if ($ads->count())
             @foreach ($ads as $ad)
-         <div class="w-full bg-green-200 bg-opacity-25 rounded-lg sahdow-lg p-12 flex flex-col justify-center items-center transform transition duration-500 hover:scale-110 hover:bg-opacity-50">
+         <div class="w-full bg-yellow-300 bg-opacity-25 rounded-lg sahdow-lg p-12 flex flex-col justify-center items-center transform transition duration-500 hover:scale-110 hover:bg-opacity-50">
         
                 <div class="mb-8 text-center text-xl">
-                        <a href="{{route('users.ads', $ad->user)}}" class="font-bold">{{$ad->user->name}}</a>
+                        <a href="{{route('users.ads', $ad->user)}}" class="font-bold hover:bg-yellow-500">{{$ad->user->name}}</a>
                         <div>
-                            <span class="text-gray-600 text-sm">Posted {{$ad->created_at->diffForHumans()}} ago</span>
+                            <span class="text-gray-600 text-sm">Posted {{$ad->created_at->diffForHumans()}}</span>
                         </div>
                         <div class="text-center mt-6 ">
                             <p class="text-xl font-bold mb-2">{{ $ad->productname}}</p>
@@ -53,19 +53,19 @@
                         @if(!$ad->likedBy(auth()->user()))
                         <form action="{{route('ads.likes', $ad->id)}}" method="post" class="mr-3">
                             @csrf
-                            <button type="submit" class="text-blue-500">Up Vote</button>
+                            <button type="submit" class="text-yellow-500">Up Vote</button>
                         </form>
                         @else
                         <form action="{{route('ads.likes', $ad->id)}}" method="post" class="ml-3">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-blue-500">Vote</button>
+                            <button type="submit" class="text-green-500">Up Voted</button>
                         </form>
                         @endif
                     @endauth
                 </div>
                 <div class="mt-3">
-                    <span class="text-gray-600 text-sm">{{ $ad->likes->count()}} {{Str::plural('Interested in this product', $ad->likes->count())}}</span> 
+                    <span class="text-gray-600 text-sm">{{ $ad->likes->count()}} {{Str::plural('Up Votes', $ad->likes->count())}}</span> 
                 </div>
                 <div class="flex justify-evenly ">
                     <div class="p-4">
@@ -73,13 +73,13 @@
                     <form action="{{route('ads.destroy', $ad)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="text-blue-500">Delete</button>
+                        <button type="submit" class="text-yellow-500">Delete</button>
                     </form>
                     @endcan
                 </div>
                 <div class="p-4">
                     @if(auth()->user()->id === $ad->user_id)
-                    <a href="/editad/{{$ad->id}}"><button class="text-blue-500">Edit</button></a>
+                    <a href="/editad/{{$ad->id}}"><button class="text-yellow-500">Edit</button></a>
                     @endif
                 </div>
                 </div>

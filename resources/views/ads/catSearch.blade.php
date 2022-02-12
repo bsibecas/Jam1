@@ -71,7 +71,7 @@
                     @endauth
                 </div>
                 <div class="mt-3">
-                    <span class="text-gray-600 text-sm">{{ $ad->likes->count()}} {{Str::plural('Interested in this product', $ad->likes->count())}}</span> 
+                    <span class="text-gray-600 text-sm">{{ $ad->likes->count()}} {{Str::plural('Up Votes', $ad->likes->count())}}</span> 
                 </div>
             </div>
                     @endforeach

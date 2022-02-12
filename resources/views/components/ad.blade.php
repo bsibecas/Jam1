@@ -31,13 +31,13 @@
                         @if(!$ad->likedBy(auth()->user()))
                         <form action="{{route('ads.likes', $ad->id)}}" method="post" class="mr-3">
                             @csrf
-                            <button type="submit" class="text-blue-500">Up Vote</button>
+                            <button type="submit" class="text-yellow-500">Up Vote</button>
                         </form>
                         @else
                         <form action="{{route('ads.likes', $ad->id)}}" method="post" class="ml-3">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-blue-500">Vote</button>
+                            <button type="submit" class="text-green-500">Up Voted</button>
                         </form>
                         @endif
                     @endauth

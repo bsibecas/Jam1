@@ -12,7 +12,7 @@
     
     <div class="w-full">
         <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 pt-3">
-        <div class="text-center">
+        <div class="text-center pb-8">
             <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-slate-400">
                 Welcome to Sucksess
             </h1>
@@ -25,7 +25,7 @@
             
             @foreach ($ads as $ad)
            
-         <div class="w-full bg-green-200 bg-opacity-20 rounded-lg sahdow-lg p-12 flex flex-col justify-center items-center transform transition duration-500 hover:scale-110 hover:bg-opacity-50 mb-5">
+         <div class="w-full bg-yellow-300 bg-opacity-20 rounded-lg sahdow-lg p-12 flex flex-col justify-center items-center transform transition duration-500 hover:scale-110 hover:bg-opacity-50 mb-5">
          
                 <div class="mb-8 text-center text-xl">
                     @auth
@@ -47,20 +47,20 @@
                         @if(!$ad->likedBy(auth()->user()))
                         <form action="{{route('ads.likes', $ad->id)}}" method="post" class="mr-3">
                             @csrf
-                            <button type="submit" class="text-blue-500">Up Vote</button>
+                            <button type="submit" class="text-yellow-500 font-bold">Up Vote</button>
                         </form>
                         @else
                        
                         <form action="{{route('ads.likes', $ad->id)}}" method="post" class="ml-3">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-blue-500">Vote</button>
+                            <button type="submit" class="text-green-500 font-bold">Up Voted</button>
                         </form>
                         @endif
                     @endauth
                 </div>
                 <div class="mt-3">
-                    <span class="text-gray-600 text-sm">{{ $ad->likes->count()}} {{Str::plural('Interested in this product', $ad->likes->count())}}</span> 
+                    <span class="text-gray-600 text-sm">{{ $ad->likes->count()}} {{Str::plural('Up Votes', $ad->likes->count())}}</span> 
                 </div>
             </div>
                     @endforeach
